@@ -23,7 +23,9 @@
   </head>
   <body>
     <nav>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top"
+      >
         <div class="container-fluid">
           <a class="navbar-brand" href="/">Nomad Atlas</a>
           <button
@@ -39,22 +41,22 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-            <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link" href="/about">About</a>
-            </li>
-            {% if user.is_authenticated %}
-                <li class="nav-item">
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
-                </li>
-            {% endif %}
+              </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item"></li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
+              {% endif %}
             </ul>
           </div>
         </div>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+<!-- comment -->
+{% block title %}About{% endblock %}
+<!-- comment -->
+{% block content%}
+<div class="container hero-section mt-5">
+  <h1>Sign up for Nomad Atlas</h1>
+  <form method="post" action="{% url 'signup' %}">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" class="button" value="Sign Up" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+</div>
+{% endblock %}
