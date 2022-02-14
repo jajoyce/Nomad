@@ -49,6 +49,22 @@ class ProfileList(TemplateView):
         context['profiles'] = Profile.objects.all()
         return context
 
-class ProfileDetail(DetailView):
-    model = Profile
+class ProfileDetail(TemplateView):
     template_name = "profile_detail.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['profile'] = Profile.objects.get(pk = pk)
+        return context
+
+class PostList(TemplateView):
+    template_name = "post_list.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.all()        
+        return context
+    
+class PostDetail(DetailView):
+        model = Post
+        template_name = "post_detail.html"
