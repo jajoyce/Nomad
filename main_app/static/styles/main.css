@@ -13,14 +13,24 @@
 .card-title {
   font-weight: bold;
 }
-.card img {
+/* .card img {
   width: 40%;
   height: auto;
   border-top-right-radius: 0;
   border-bottom-left-radius: calc(0.25rem - 1px);
-}
+} */
 
 .city-detail-img {
   width: 70%;
+  height: auto;
+}
+
+.profile-list-img-container {
+  width: 40%;
+  height: auto;
+}
+
+.profile-detail-img-container {
+  width: 50%;
   height: auto;
 }
