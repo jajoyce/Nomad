@@ -40,3 +40,15 @@ class CityList(TemplateView):
 class CityDetail(DetailView):
     model = City
     template_name = "city_detail.html"
+
+class ProfileList(TemplateView):
+    template_name = "profile_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['profiles'] = Profile.objects.all()
+        return context
+
+class ProfileDetail(DetailView):
+    model = Profile
+    template_name = "profile_detail.html"
