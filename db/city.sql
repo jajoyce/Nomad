@@ -1,0 +1,10 @@
+INSERT INTO main_app_city (name, img, country) VALUES  ('San Francisco', 'https://a.cdn-hotels.com/gdcs/production92/d1580/9a28fc70-9bea-11e8-a1b5-0242ac110053.jpg', 'U.S.');
+INSERT INTO main_app_city (name, img, country) VALUES  ('New York City', 'https://static.onecms.io/wp-content/uploads/sites/28/2021/02/19/new-york-city-evening-NYCTG0221.jpg', 'U.S.');
+INSERT INTO main_app_city (name, img, country) VALUES  ('Bangkok', 'https://media.cntraveler.com/photos/5b97ff912f11297e77971e01/master/w_2580%2Cc_limit/GettyImages-493061924.jpg', 'Thailand');
+INSERT INTO main_app_city (name, img, country) VALUES  ('Paris', 'https://media.cntraveler.com/photos/5baa680ddb225a4f50684844/master/w_2580%2Cc_limit/GettyImages-890129930.jpg', 'France');
+INSERT INTO main_app_city (name, img, country) VALUES  (' London', 'https://media.cntraveler.com/photos/556f1e0c9eba149914c7f3a5/master/w_2580%2Cc_limit/london-england-cr-getty.jpg', 'U.K.');
+INSERT INTO main_app_city (name, img, country) VALUES  ('Dubai', 'https://media.cntraveler.com/photos/5baa6777db225a4f50684840/master/w_2580%2Cc_limit/GettyImages-143769640.jpg', 'U.A.E');
+INSERT INTO main_app_city (name, img, country) VALUES  ('Istanbul', 'https://media.cntraveler.com/photos/5baa678cc4c3254b31283ffb/master/w_1920%2Cc_limit/GettyImages-475460738.jpg', 'Turkey');
+INSERT INTO main_app_city (name, img, country) VALUES  ('Tokyo', 'https://media.cntraveler.com/photos/5baa67f4625211259a973451/master/w_1920%2Cc_limit/GettyImages-560347813.jpg', 'Japan');
+INSERT INTO main_app_city (name, img, country) VALUES  ('Antalya', 'https://media.cntraveler.com/photos/5d705530afaa3e00087d64cd/master/w_1920%2Cc_limit/Antalya_GettyImages-866962204.jpg', 'Turkey');
+INSERT INTO main_app_city (name, img, country) VALUES  ('Porto', 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2021%2F08%2F09%2Fporto-portugal-09-EUROCITIESWB21.jpg', 'Portugal');
