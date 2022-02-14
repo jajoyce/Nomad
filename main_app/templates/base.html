@@ -44,6 +44,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="/about">About</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'city_list'%}">Cities</a>
+              </li>
               {% if user.is_authenticated %}
               <li class="nav-item"></li>
               <li class="nav-item">

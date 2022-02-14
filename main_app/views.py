@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic.base import TemplateView
+from django.views.generic import TemplateView, DetailView
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
-
-
+from django.contrib.auth import login
+from .models import City, Post, Profile, Comment
 # Create your views here.
 
 class Home(TemplateView):
@@ -28,3 +28,15 @@ class Signup(View):
         else:
             context ={"form": form}
             return render(request, "registration/signup.html", context)
+
+class CityList(TemplateView):
+    template_name = "city_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cities'] = City.objects.all()
+        return context
+
+class CityDetail(DetailView):
+    model = City
+    template_name = "city_detail.html"

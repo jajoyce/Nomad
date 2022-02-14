@@ -6,3 +6,21 @@
   max-height: 500px;
   object-fit: cover;
 }
+
+.card {
+  flex-direction: row;
+}
+.card-title {
+  font-weight: bold;
+}
+.card img {
+  width: 40%;
+  height: auto;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+.city-detail-img {
+  width: 70%;
+  height: auto;
+}
