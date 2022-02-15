@@ -1,16 +1,16 @@
-{% extends 'base.html' %}
-
-{% block title %}Login{% endblock %}
-
+{% extends 'base.html' %} {% block title %}Login{% endblock %}
+<!-- comment for space  -->
 {% block content%}
 <div class="container hero-section mt-5">
-  <h1>Nomad Atlas</h1>
-  <h3>Login</h3>
-  <form method="post" action="{% url 'login' %}">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" class="button" value="Login">
-      <input type="hidden" name="next" value="{{ next }}">
-  </form>
+  <div class="card" style="width: 20em">
+    <div class="card-body">
+      <h3 class="card-title">Login</h3>
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %} {{ form.as_p }}
+        <input type="submit" value="Login" class="btn btn-primary" />
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+    </div>
+  </div>
 </div>
 {% endblock %}

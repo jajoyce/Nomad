@@ -9,14 +9,15 @@
 
 .card {
   flex-direction: row;
+  margin: 15px auto;
 }
-.card-title {
-  font-weight: bold;
+.card img {
+  width: 35%;
+  height: auto;
 }
 
-.card img {
-  border-top-right-radius: 0;
-  border-bottom-left-radius: calc(0.25rem - 1px);
+.card-body {
+  width: 25%;
 }
 
 .city-detail-img {
@@ -35,6 +36,6 @@
 }
 
 .post-small-img-container {
-  width: 25%;
+  width: 40%;
   height: auto;
 }
