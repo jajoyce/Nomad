@@ -39,3 +39,11 @@
   width: 40%;
   height: auto;
 }
+
+.fieldWrapper {
+  margin: 10px auto;
+}
+
+.fieldWrapper input {
+  width: 80%;
+}

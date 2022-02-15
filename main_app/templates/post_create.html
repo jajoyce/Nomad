@@ -10,9 +10,31 @@
         <div class="card-body">
           <h3 class="card-title">New Post</h3>
           <form method="post">
-            {% csrf_token %} {{ form.as_p }}
+            {% csrf_token %} 
+            {{ form.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ form.title.errors }}
+                <label for="{{ form.title.id_for_label }}">Title*</label><br>
+                {{ form.title }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.content.errors }}
+                <label for="{{ form.content.id_for_label }}">Content*</label><br>
+                {{ form.content }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.img.errors }}
+                <label for="{{ form.img.id_for_label }}">Image</label><br>
+                {{ form.img }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.city.errors }}
+                <label for="{{ form.city.id_for_label }}">City*</label><br>
+                {{ form.city }}
+            </div><br>
             <input type="submit" value="Create Post" class="btn btn-primary" />
-          </form>
+          </form><br>
+          <small>* Required</small>
         </div>
       </div>
     </div>

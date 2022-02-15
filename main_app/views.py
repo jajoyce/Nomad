@@ -4,6 +4,7 @@ from django.views.generic import TemplateView, DetailView, CreateView, UpdateVie
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import City, Post, Profile, User
 from django.contrib.auth.models import User
 
@@ -69,14 +70,18 @@ class PostList(TemplateView):
         return context
     
 class PostDetail(DetailView):
-        model = Post
-        template_name = "post_detail.html"
-
-class PostCreate(CreateView):
     model = Post
-    fields = ['title', 'content', 'img', 'city', 'author']
+    template_name = "post_detail.html"
+
+class PostCreate(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ['title', 'content', 'img', 'city']
     template_name = 'post_create.html'
     success_url = '/posts/'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 class PostUpdate(UpdateView):
     model = Post
