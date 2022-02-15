@@ -27,10 +27,19 @@
       <div class="row">
           <div class="col">
               <div class="card mb-2">
-                  <h3>{{ post.title }}</h3>
+                  <div class="card-body">
+                      <h3>{{ post.title }}</h3>
+                      <h5>Posted from: {{ post.city }}</h5>
+                      <p>"{{ post.content }}"</p>
+                  </div>
+                  <div class="post-small-img-container">
+                      <img src="{{ post.img }}" class="card-img" alt="{{ post.city}} post image">
+                  </div>
               </div>
           </div>
       </div>
+      {% empty %}
+      <p>No posts by this user</p>
       {% endfor %}
   </div>
 </div>

@@ -13,12 +13,11 @@
 .card-title {
   font-weight: bold;
 }
-/* .card img {
-  width: 40%;
-  height: auto;
+
+.card img {
   border-top-right-radius: 0;
   border-bottom-left-radius: calc(0.25rem - 1px);
-} */
+}
 
 .city-detail-img {
   width: 70%;
@@ -32,5 +31,10 @@
 
 .profile-detail-img-container {
   width: 50%;
+  height: auto;
+}
+
+.post-small-img-container {
+  width: 25%;
   height: auto;
 }

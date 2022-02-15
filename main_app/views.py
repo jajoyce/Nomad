@@ -4,7 +4,9 @@ from django.views.generic import TemplateView, DetailView
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from .models import City, Post, Profile, Comment
+from .models import City, Post, Profile, User
+from django.contrib.auth.models import User
+
 # Create your views here.
 
 class Home(TemplateView):
@@ -49,12 +51,13 @@ class ProfileList(TemplateView):
         context['profiles'] = Profile.objects.all()
         return context
 
-class ProfileDetail(TemplateView):
+class ProfileDetail(DetailView):
+    model = Profile
     template_name = "profile_detail.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['profile'] = Profile.objects.get(pk = pk)
+        context['user'] = User.objects.filter(id = self.kwargs['pk'])
         return context
 
 class PostList(TemplateView):

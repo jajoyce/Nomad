@@ -31,7 +31,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     img = models.CharField(max_length=500, default="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.wysetc.org%2Fwp-content%2Fuploads%2Fsites%2F19%2F2018%2F07%2FAdobeStock_152013093.jpeg&f=1&nofb=1")
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     city = models.ForeignKey(City, on_delete=models.CASCADE, related_name="posts")
     created_at = models.DateTimeField(auto_now_add=True)
 
