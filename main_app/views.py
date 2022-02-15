@@ -83,13 +83,13 @@ class PostCreate(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class PostUpdate(UpdateView):
+class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
     fields = ['title', 'content', 'img', 'city']
     template_name = "post_update.html"
     success_url = '/posts/'
 
-class PostDelete(DeleteView):
+class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = "post_delete_confirmation.html"
     success_url = '/posts/'
