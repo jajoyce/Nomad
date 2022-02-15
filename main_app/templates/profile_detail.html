@@ -1,18 +1,16 @@
-{% extends 'base.html' %} 
-{% block title %}{{ profile }}{% endblock %}
+{% extends 'base.html' %} {% block title %}{{ profile }}{% endblock %}
 <!-- comment for space -->
 {% block content%}
 <div class="container mt-5">
   <h1>{{ profile }}</h1>
-  <div class="container">
     <div class="row">
-      {% for post in profile.user.posts.all %}
-      <div class="col-10">
+      <div class="col-9">
+        {% for post in profile.user.posts.all %}
         <div class="card">
           <div class="card-body">
             <small> Posted from: {{ post.city }} on {{post.created_at}}</small>
             <h3>{{ post.title }}</h3>
-            <p>"{{ post.content }}"</p>
+            <p>"{{ post.content|truncatechars:200 }}"</p>
             <a
               href=" {% url 'post_detail' post.pk %}"
               type="button"
@@ -31,7 +29,7 @@
         <p>No posts by this user</p>
         {% endfor %}
       </div>
-      <div class="col-2">
+      <div class="col-3">
         <img
           src="{{ profile.img }}"
           class="img rounded-circle"

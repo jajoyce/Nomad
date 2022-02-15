@@ -17,7 +17,7 @@
           >
           <h2 class="card-title">{{post.title}}</h2>
           <p class="card-text"></p>
-          <p>{{post.content}}</p>
+          <p>{{ post.content|truncatechars:250 }}</p>
           <a
             href=" {% url 'post_detail' post.pk %}"
             type="button"
