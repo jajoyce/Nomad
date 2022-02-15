@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+<!-- comment -->
+{% block title %}Cities{% endblock %}
+<!-- comment -->
+{% block content%}
+<div class="container hero-section mt-5">
+  <h1>Cities</h1>
+  <div class="container">
+    {% for city in cities %}
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3">
+          <a href="{% url 'city_detail' city.pk %}">
+            <img src="{{city.img}}" class="card-img" alt="{{city.name}}" />
+          </a>
+          <div class="card-body">
+            <div class="card-title">
+              <h2>{{city.name}}, {{city.country}}</h2>
+              <a
+                href="{% url 'city_detail' city.pk %}"
+                type="button"
+                class="btn btn-primary lg-btn"
+              >
+                View {{city.name}} posts</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

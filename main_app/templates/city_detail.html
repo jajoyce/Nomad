@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+<!-- comment -->
+{% block title %}{{ city.name }}{% endblock %}
+<!-- comment -->
+{% block content%}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-4">
+      <h1>{{city.name}}</h1>
+    </div>
+    <div class="col-8">
+      <img src="{{city.img}}" class="city-detail-img" alt="{{city.name}}" />
+    </div>
+  </div>
+</div>
+<div class="container mt-5">
+  <div>
+    {% for post in city.posts.all %}
+    <div class="card mb-3">
+      <a href="">
+        <img src="" class="card-img" alt="" />
+      </a>
+      <div class="card-body">
+        <div class="card-title">
+          <h2>{{post.title}}</h2>
+        </div>
+        <p>Written By: <strong>{{post.author}}</strong></p>
+        <a href="" class="btn btn-primary" type="buttton">Read More</a>
+      </div>
+    </div>
+    {% empty %}
+    <p>No posts for city</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

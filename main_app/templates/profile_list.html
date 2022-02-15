@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Nomads{% endblock %}
+
+{% block content%}
+<div class="container mt-5">
+  <h1>Your fellow Nomads:</h1>
+  <div class="container">
+    {% for profile in profiles %}
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3">
+          <div class="profile-list-img-container">
+              <a href="{% url 'profile_detail' profile.pk %}">
+                <img src="{{ profile.img }}" class="card-img" alt="{{ profile.user.username }}" />
+              </a>
+          </div>
+          <div class="card-body">
+              <h2>{{ profile.user.first_name }} {{ profile.user.last_name }}</h2>
+              <h4>Current City: {{ profile.current_city }}</h4>
+              <p>Username: {{ profile.user.username }}</p>
+              <a
+                href="{% url 'profile_detail' profile.pk %}"
+                type="button"
+                class="btn btn-primary lg-btn"
+              >
+                View {{ profile.user.first_name }} {{ profile.user.last_name }}'s posts</a
+              >
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

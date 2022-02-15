@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ profile }}{% endblock %}
+
+{% block content%}
+<div class="container mt-5">
+  <h1>{{ profile }}'s profile and posts:</h1>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3">
+          <div class="profile-detail-img-container">
+              <img src="{{ profile.img }}" class="card-img" alt="{{ profile.user.username }}" />
+          </div>
+          <div class="card-body">
+              <h2>{{ profile }}</h2>
+              <p>Username: {{ profile.user.username }}</p>
+              <h4>Current City: {{ profile.current_city }}</h4>
+              <p>About Me: "{{ profile.bio }}"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-4">
+      {% for post in profile.user.posts.all %}
+      <div class="row">
+          <div class="col">
+              <div class="card mb-2">
+                  <div class="card-body">
+                      <h3>{{ post.title }}</h3>
+                      <h5>Posted from: {{ post.city }}</h5>
+                      <p>"{{ post.content }}"</p>
+                  </div>
+                  <div class="post-small-img-container">
+                      <img src="{{ post.img }}" class="card-img" alt="{{ post.city}} post image">
+                  </div>
+              </div>
+          </div>
+      </div>
+      {% empty %}
+      <p>No posts by this user</p>
+      {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+<!-- comment -->
+{% block title %} {{post.title}} {% endblock %}
+<!-- comment -->
+{% block content%}
+<div class="container hero-section mt-5">
+  <h1>post</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3">
+            <img src="{{post.img}}" class="card-img" alt="{{post.title}}" />
+          <div class="card-body">
+            <div class="card-title">
+              <h2>{{post.title}}</h2>
+              <p>{{post.author}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p> {{ post.content }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

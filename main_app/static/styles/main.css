@@ -1,0 +1,40 @@
+.hero-section {
+  height: 500px;
+}
+
+.hero-image {
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.card {
+  flex-direction: row;
+}
+.card-title {
+  font-weight: bold;
+}
+
+.card img {
+  border-top-right-radius: 0;
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+.city-detail-img {
+  width: 70%;
+  height: auto;
+}
+
+.profile-list-img-container {
+  width: 40%;
+  height: auto;
+}
+
+.profile-detail-img-container {
+  width: 50%;
+  height: auto;
+}
+
+.post-small-img-container {
+  width: 25%;
+  height: auto;
+}
