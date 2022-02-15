@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+<!-- comment -->
+{% block title %}Delete Post{% endblock %}
+<!-- comment -->
+{% block content%}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width: 30em">
+        <div class="card-body">
+          <h3 class="card-title">Do you want to delete the post?</h3>
+          <form method="post">
+            {% csrf_token %}
+            <div>
+              <input type="submit" value="Delete Post" class="btn btn-danger" />
+              <a href="{% url 'post_detail' post.pk %}" class="btn btn-primary">
+                Go back to post</a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -13,6 +13,20 @@
       <div class="mt-4">
         <p>{{ post.content }}</p>
       </div>
+      <div>
+        <a
+          href="{% url 'post_update' post.pk %}"
+          type="button"
+          class="btn btn-primary"
+          >Update Post</a
+        >
+        <a
+          href="{% url 'post_delete' post.pk %}"
+          type="button"
+          class="btn btn-danger"
+          >Delete Post</a
+        >
+      </div>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
@@ -71,3 +71,20 @@ class PostList(TemplateView):
 class PostDetail(DetailView):
         model = Post
         template_name = "post_detail.html"
+
+class PostCreate(CreateView):
+    model = Post
+    fields = ['title', 'content', 'img', 'city', 'author']
+    template_name = 'post_create.html'
+    success_url = '/posts/'
+
+class PostUpdate(UpdateView):
+    model = Post
+    fields = ['title', 'content', 'img', 'city']
+    template_name = "post_update.html"
+    success_url = '/posts/'
+
+class PostDelete(DeleteView):
+    model = Post
+    template_name = "post_delete_confirmation.html"
+    success_url = '/posts/'

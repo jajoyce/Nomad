@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<!-- comment -->
+{% block title %}Update Post{% endblock %}
+<!-- comment -->
+{% block content%}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width: 30em">
+        <div class="card-body">
+          <h3 class="card-title">Update {{post.title}}</h3>
+          <form method="post">
+            {% csrf_token %} {{ form.as_p }}
+            <input type="submit" value="Update Post" class="btn btn-primary" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

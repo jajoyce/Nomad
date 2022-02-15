@@ -34,6 +34,11 @@
     <div class="col-3">
       <img src="{{city.img}}" class="card-img" alt="{{city.name}}" />
       <small>{{city.name}}</small>
+      <div>
+        <a href="{% url 'post_create' %}" type="button" class="btn btn-success"
+          >Create New Post</a
+        >
+      </div>
     </div>
   </div>
 </div>
