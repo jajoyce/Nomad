@@ -45,6 +45,9 @@
             <br />
             <strong>About Me:</strong>
             <br />"{{ profile.bio }}"
+            <br>
+            <strong>Joined:</strong>
+            <br>{{profile.created_at}}
           </p>
           <a href="{% url 'post_create' %}" type="button" class="btn btn-success">Create New Post</a>
         </div>
