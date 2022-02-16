@@ -21,7 +21,7 @@
           <a
             href=" {% url 'post_detail' post.pk %}"
             type="button"
-            class="btn btn-primary"
+            class="btn btn-primary stretched-link"
           >
             Read Post
           </a>
@@ -36,7 +36,10 @@
       <h5>{{ city.name }}</h5>
       <h6>{{ city.country }}</h6>
       <div>
-        <a href="{% url 'post_city_create' city.pk %}" type="button" class="btn btn-success mt-3"
+        <a
+          href="{% url 'post_city_create' city.pk %}"
+          type="button"
+          class="btn btn-success mt-3"
           >Create New Post</a
         >
       </div>

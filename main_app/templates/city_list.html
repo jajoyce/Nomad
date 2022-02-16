@@ -8,7 +8,8 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-3"></div>
+    <div class="col-6">
       {% for city in cities %}
       <div class="card">
         <img src="{{city.img}}" class="card-img" alt="{{city.name}}" />
@@ -18,7 +19,7 @@
             <a
               href="{% url 'city_detail' city.pk %}"
               type="button"
-              class="btn btn-primary"
+              class="btn btn-primary stretched-link"
             >
               View {{city.name}} posts</a
             >
@@ -27,6 +28,7 @@
       </div>
       {% endfor %}
     </div>
+    <div class="col-3"></div>
   </div>
 </div>
 {% endblock %}

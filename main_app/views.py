@@ -159,3 +159,7 @@ class ProfileCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+class Loggedin(View):
+    def get(self, request):
+        user = request.user
+        return redirect(f'/nomads/{user.profile.pk}')
