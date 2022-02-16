@@ -1,9 +1,9 @@
--- INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES (' Hey guys, thank you for sharing my post.', 3, 2,'2022-01-09 11:00:42.517205-07');
--- INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES (' Hey guys, thank you for sharing my post.', 3, 6,'2022-01-09 11:00:42.517205-07');
--- INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES (' Hey guys, thank you for sharing my post.', 3, 5,'2022-01-09 11:00:42.517205-07');
--- INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES (' Hey guys, thank you for sharing my post.', 3, 4,'2022-01-09 11:00:42.517205-07');
--- INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES (' Hey guys, thank you for sharing my post.', 3, 3,'2022-01-09 11:00:42.517205-07');
-INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES (' Even the most foreign country or faraway places aren''t light years away. The journey may appear long and intimidating, but when you take one step at a time, it''s manageable. I think this is the perfect way to begin a list of the best quotes for travel lovers.', 3, 6,'2022-01-09 11:00:42.517205-07');
-INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES (' I am not the same, having seen the moon shine on the other side of the world', 4, 5,'2021-01-09 11:00:42.517205-07');
-INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES (' There''s a sunrise and a sunset every single day, and they''re absolutely free. Don''t miss so many of them', 3, 3,'2022-01-09 05:00:42.517205-07');
-INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES (' Travel makes one modest. You see what a tiny place you occupy in the world', 5, 2,'2022-01-10 11:00:42.517205-07');
+INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES ('Great post, thanks for sharing!', 1, 3,'2022-01-09 11:00:42.517205-07');
+INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES ('This is super helpful, thanks for inspiring me to visit San Francisco.', 1, 5,'2022-01-09 11:00:42.517205-07');
+INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES ('What a great travel guide! Sounds like a great place to visit.', 1, 4,'2022-01-09 11:00:42.517205-07');
+INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES ('I miss San Francisco!', 1, 6,'2022-01-09 11:00:42.517205-07');
+INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES ('Hey guys, thank you all for liking my post!', 1, 2,'2022-01-09 11:00:42.517205-07');
+INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES ('Even the most foreign country or faraway places aren''t light years away. The journey may appear long and intimidating, but when you take one step at a time, it''s manageable. I think this is the perfect way to begin a list of the best quotes for travel lovers.', 3, 6,'2022-01-09 11:00:42.517205-07');
+INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES ('I am not the same, having seen the moon shine on the other side of the world', 4, 5,'2021-01-09 11:00:42.517205-07');
+INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES ('There''s a sunrise and a sunset every single day, and they''re absolutely free. Don''t miss so many of them', 3, 3,'2022-01-09 05:00:42.517205-07');
+INSERT INTO main_app_comment (content, post_id, author_id, created_at) VALUES ('Travel makes one modest. You see what a tiny place you occupy in the world', 5, 2,'2022-01-10 11:00:42.517205-07');

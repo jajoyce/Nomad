@@ -41,6 +41,22 @@
                 </div>
               </div>
               {% endfor %}
+              <div class="card">
+                <div class="card-body">
+                  <form method="POST">
+                    {% csrf_token %} 
+                    {{ form.non_field_errors }}
+                    <!-- <input type="hidden" id="author_id" value="{{ user.id }}"> -->
+                    <!-- <input type="hidden" id="post" value="{{ post.id }}"> -->
+                    <div class="fieldWrapper">
+                        {{ form.content.errors }}
+                        <label for="{{ form.content.id_for_label }}" class="mb-2">Leave your own comment on this post!</label><br>
+                        {{ form.content }}
+                    </div>
+                    <input type="submit" value="Add Comment" class="btn btn-primary">
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>

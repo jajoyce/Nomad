@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import City, Post, Profile, User
+from .models import City, Post, Profile, User, Comment
 from django.contrib.auth.models import User
 from  django import forms
 # Create your views here.
@@ -23,8 +23,8 @@ class RegisterForm(UserCreationForm):
     last_name  = forms.CharField()
 
     class Meta:
-	    model = User
-	    fields = ["username", "email", "first_name", "last_name", "password1", "password2"]
+        model = User
+        fields = ["username", "email", "first_name", "last_name", "password1", "password2"]
 
 class Signup(View):
     def get(self, request):
@@ -79,9 +79,40 @@ class PostList(TemplateView):
         context['posts'] = Post.objects.all()        
         return context
     
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+
 class PostDetail(DetailView):
     model = Post
     template_name = "post_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CommentForm()
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        form = CommentForm(request.POST)
+        self.object = self.get_object()
+        context = super().get_context_data(**kwargs)
+        post = Post.objects.filter(id=self.kwargs['pk'])[0]
+
+        if form.is_valid():
+            user = request.user
+            # author_id = form.cleaned_data['author_id']
+            # post_id = form.cleaned_data['post']
+            content = form.cleaned_data['content']
+            comment = Comment.objects.create(author_id=user.id, post=post, content=content)
+
+            context['form'] = CommentForm()
+            return self.render_to_response(context=context)
+
+        return self.render_to_response(context=context)
+
+
+
 
 class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
@@ -111,16 +142,9 @@ class ProfileCreate(CreateView):
     
     def get_success_url(self):
         return reverse('profile_detail', kwargs={'pk': self.object.pk})
-    # success_url = f"/nomads/{current_user}"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-    
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(CreateView, self).get_context_data(**kwargs)
-    #     context['user'] = User.objects.get(id = self.request.user.id)
-    #     return context
-
-# create_user(username, email=None, password=None, **extra_fields)
+# class CommentCreate()
