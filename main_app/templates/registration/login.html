@@ -1,6 +1,5 @@
-{% extends 'base.html' %} 
-{% block title %}Login{% endblock %}
-{% block content%}
+{% extends 'base.html' %} {% block title %}Login{% endblock %} {% block
+content%}
 <div class="container hero-section mt-5">
   <div class="card" style="width: 20em">
     <div class="card-body">
@@ -12,8 +11,10 @@
       </form>
     </div>
   </div>
-  <div class="mt-4" style="text-align: center;">
-    <h6>Don't have an account yet? <a href="{% url 'signup' %}">Sign up here</a></h6>
+  <div class="mt-4" style="text-align: center">
+    <h6>
+      Don't have an account yet? <a href="{% url 'signup' %}">Sign up here</a>
+    </h6>
   </div>
 </div>
 {% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block title %}Create Profile{% endblock %}
+<!-- comment  -->
+{% block content%}
+<div class="container hero-section mt-5">
+  <h1>Create profile</h1>
+  <form method="post" action="">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" class="button" value="Sign Up" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+</div>
+{% endblock %}
