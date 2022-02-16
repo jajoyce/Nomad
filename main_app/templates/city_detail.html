@@ -36,7 +36,7 @@
       <h5>{{ city.name }}</h5>
       <h6>{{ city.country }}</h6>
       <div>
-        <a href="{% url 'post_create' %}" type="button" class="btn btn-success mt-3"
+        <a href="{% url 'post_city_create' city.pk %}" type="button" class="btn btn-success mt-3"
           >Create New Post</a
         >
       </div>

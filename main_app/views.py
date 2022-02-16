@@ -119,6 +119,23 @@ class PostCreate(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+class PostCityCreate(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ['title', 'content', 'img']
+    template_name = 'post_create.html'
+    success_url = '/posts/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['city_preselected'] = True
+        context['city_name'] = City.objects.filter(id=self.kwargs['pk'])[0]
+        return context
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.city = City.objects.filter(id=self.kwargs['pk'])[0]
+        return super().form_valid(form)
+
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
     fields = ['title', 'content', 'img', 'city']

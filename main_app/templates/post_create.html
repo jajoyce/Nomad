@@ -27,11 +27,15 @@
                 <label for="{{ form.img.id_for_label }}">Image</label><br>
                 {{ form.img }}
             </div>
+            {% if city_preselected %}
+            <p>City: {{ city_name }}</p>
+            {% else %}
             <div class="fieldWrapper">
                 {{ form.city.errors }}
                 <label for="{{ form.city.id_for_label }}">City *</label><br>
                 {{ form.city }}
             </div><br>
+            {% endif %}
             <input type="submit" value="Create Post" class="btn btn-primary" />
           </form><br>
           <small>* Required</small>
