@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import City, Post, Profile, User, Comment
 from django.contrib.auth.models import User
 from  django import forms
-# Create your views here.
+
 
 class Home(TemplateView):
     template_name = "home.html"
@@ -101,17 +101,12 @@ class PostDetail(DetailView):
 
         if form.is_valid():
             user = request.user
-            # author_id = form.cleaned_data['author_id']
-            # post_id = form.cleaned_data['post']
             content = form.cleaned_data['content']
             comment = Comment.objects.create(author_id=user.id, post=post, content=content)
-
             context['form'] = CommentForm()
             return self.render_to_response(context=context)
 
         return self.render_to_response(context=context)
-
-
 
 
 class PostCreate(LoginRequiredMixin, CreateView):
@@ -147,4 +142,3 @@ class ProfileCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-# class CommentCreate()

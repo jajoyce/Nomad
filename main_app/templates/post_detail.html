@@ -31,7 +31,10 @@
         <div class="row">
           <div class="col">
             <div>
-              {% for comment in post.comments.all%} 
+              There are {{ post.comments.count }} comments on this post:
+            </div>
+            <div>
+              {% for comment in post.comments.all %} 
               <div class="card">
                 <div class="card-body"> 
                 <h6>
@@ -41,13 +44,12 @@
                 </div>
               </div>
               {% endfor %}
+              {% if user.is_authenticated %}
               <div class="card">
                 <div class="card-body">
                   <form method="POST">
                     {% csrf_token %} 
                     {{ form.non_field_errors }}
-                    <!-- <input type="hidden" id="author_id" value="{{ user.id }}"> -->
-                    <!-- <input type="hidden" id="post" value="{{ post.id }}"> -->
                     <div class="fieldWrapper">
                         {{ form.content.errors }}
                         <label for="{{ form.content.id_for_label }}" class="mb-2">Leave your own comment on this post!</label><br>
@@ -57,6 +59,7 @@
                   </form>
                 </div>
               </div>
+              {% endif %}
             </div>
           </div>
         </div>
