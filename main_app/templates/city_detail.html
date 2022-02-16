@@ -32,10 +32,11 @@
       {% endfor %}
     </div>
     <div class="col-3">
-      <img src="{{city.img}}" class="card-img" alt="{{city.name}}" />
-      <small>{{city.name}}</small>
+      <img src="{{city.img}}" class="card-img mb-2" alt="{{city.name}}" />
+      <h5>{{ city.name }}</h5>
+      <h6>{{ city.country }}</h6>
       <div>
-        <a href="{% url 'post_create' %}" type="button" class="btn btn-success"
+        <a href="{% url 'post_create' %}" type="button" class="btn btn-success mt-3"
           >Create New Post</a
         >
       </div>
