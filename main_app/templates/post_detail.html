@@ -27,6 +27,24 @@
           >Delete Post</a
         >
       </div>
+      <div class="container mt-4" >
+        <div class="row">
+          <div class="col">
+            <div>
+              {% for comment in post.comments.all%} 
+              <div class="card">
+                <div class="card-body"> 
+                <h6>
+                  {{comment.author}}
+                </h6>
+              <p>{{comment.content}}</p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

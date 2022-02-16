@@ -15,5 +15,5 @@ urlpatterns = [
     path('posts/<int:pk>/update', views.PostUpdate.as_view(), name='post_update'),
     path('posts/<int:pk>/delete', views.PostDelete.as_view(), name='post_delete'),
     path('create-profile/', views.ProfileCreate.as_view(), name='create_profile'),
-    
+    # path('posts/<int:pk>/comment', views.commentList.as_view(), name="commentL")
 ]
