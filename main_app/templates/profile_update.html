@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+<!-- comment -->
+{% block title %}Update Profile{% endblock %}
+<!-- comment -->
+{% block content%}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width: 30em">
+        <div class="card-body">
+          <h3 class="card-title">Update Your Profile</h3>
+          <form method="post">
+            {% csrf_token %} 
+            {{ form.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ form.current_city.errors }}
+                <label for="{{ form.current_city.id_for_label }}">Current City *</label><br>
+                {{ form.current_city }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.bio.errors }}
+                <label for="{{ form.bio.id_for_label }}">Bio *</label><br>
+                {{ form.bio }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.img.errors }}
+                <label for="{{ form.img.id_for_label }}">Image</label><br>
+                {{ form.img }}
+            </div>
+            <br>
+            <input type="submit" value="Update Profile" class="btn btn-primary" />
+          </form><br>
+          <small>* Required</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

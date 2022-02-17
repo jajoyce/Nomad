@@ -6,19 +6,26 @@
 <div class="container">
   <div class="row">
     <div class="col-4"></div>
-    <div class="col-4">
+    <div class="col-5">
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Edit Comment</h3>
-          <form method="post" action="">
-            {% csrf_token %} {{ form.as_p }}
+          <form method="post">
+            {% csrf_token %} 
+            {{ form.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ form.content.errors }}
+                <label for="{{ form.content.id_for_label }}">Your Comment *</label><br>
+                {{ form.content }}
+            </div>
             <input type="submit" value="Edit Comment" class="btn btn-primary" />
             <input type="hidden" name="next" value="{{ next }}" />
-          </form>
+          </form><br>
+          <small>* Required</small>
         </div>
       </div>
     </div>
-    <div class="col-4"></div>
+    <div class="col-3"></div>
   </div>
 </div>
 {% endblock %}

@@ -14,6 +14,11 @@ from  django import forms
 class Home(TemplateView):
     template_name = "home.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.filter(id__lte=3)
+        return context
+
 class About(TemplateView):
     template_name = "about.html"
 
@@ -178,6 +183,14 @@ class CommentDelete(DeleteView):
     
     def get_success_url(self):
         return reverse('post_detail', kwargs={'pk': self.object.post.pk})
+
+class ProfileUpdate(UpdateView):
+    model = Profile
+    fields = ['current_city', 'bio', 'img']
+    template_name = 'profile_update.html'
+
+    def get_success_url(self):
+        return reverse('profile_detail', kwargs={'pk': self.object.pk})
 
 class ProfileDelete(DeleteView):
     model = Profile
