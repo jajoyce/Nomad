@@ -25,15 +25,15 @@ a:hover {
 }
 
 .btn-success:hover {
-  background-color: rgb(8, 73, 0);
+  background-color: rgb(12, 83, 3);
 }
 
 .btn-danger:hover {
-  background-color: rgb(83, 0, 0);
+  background-color: rgb(94, 8, 8);
 }
 
 .btn-primary:hover {
-  background-color: rgb(33, 37, 41);
+  background-color: rgb(50, 55, 114);
 }
 .hero-section {
   height: 500px;

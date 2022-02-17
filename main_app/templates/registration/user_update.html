@@ -1,14 +1,42 @@
 {% extends 'base.html' %} {% block title %}User update{% endblock %}
 <!-- comment -->
 {% block content%}
-<div class="container hero-section mt-5">
-<h1>Update User Account </h1>
-<form method="post" >
-    {% csrf_token %} {{ form.as_p }}
-    <input type="submit" class="button" value="Update" />
-    <input type="hidden" name="next" value="{{ next }}" />
-</form>
-</div>
-<div class="mt-4" style="text-align: center">
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 30em">
+            <div class="card-body">
+                <h3 class="card-title">Update User Account</h3>
+                <form method="post">
+                    {% csrf_token %} 
+                    {{ form.non_field_errors }}
+                    <div class="fieldWrapper">
+                        {{ form.username.errors }}
+                        <label for="{{ form.username.id_for_label }}">Username *</label><br>
+                        {{ form.username }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.email.errors }}
+                        <label for="{{ form.email.id_for_label }}">Email Address *</label><br>
+                        {{ form.email }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.first_name.errors }}
+                        <label for="{{ form.first_name.id_for_label }}">First Name</label><br>
+                        {{ form.first_name }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.last_name.errors }}
+                        <label for="{{ form.last_name.id_for_label }}">Last Name *</label><br>
+                        {{ form.last_name }}
+                    </div><br>
+                    <input type="submit" value="Update User Account" class="btn btn-primary">
+                    <a href="{% url 'profile_detail' user.profile.pk %}" class="btn btn-light">Cancel</a>
+                </form><br>
+                <small>* Required</small>
+            </div>
+        </div>
+      </div>
+    </div>
 </div>
 {% endblock %}

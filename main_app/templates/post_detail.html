@@ -29,19 +29,19 @@
         <div class="mt-4 px-5">
           <p>{{ post.content }}</p>
         </div>
-        <div>
+        <div class="px-5">
           {% if request.user == post.author %}
           <a
-            href="{% url 'post_update' post.pk %}"
-            type="button"
-            class="btn btn-primary"
-            >Update Post</a
+          href="{% url 'post_update' post.pk %}"
+          type="button"
+          class="btn btn-primary px-3"
+          >Update Post</a
           >
           <a
-            href="{% url 'post_delete' post.pk %}"
-            type="button"
-            class="btn btn-danger"
-            >Delete Post</a
+          href="{% url 'post_delete' post.pk %}"
+          type="button"
+          class="btn btn-danger px-3"
+          >Delete Post</a
           >
           {% endif %}
         </div>
@@ -63,7 +63,7 @@
                 alt="{{comment.author}}"
               />
               <div class="card-body">
-                <h6 style="display: inline-block">{{comment.author}}</h6>
+                <a href="{% url 'profile_detail' comment.author.profile.pk %}"><h6 style="display: inline-block">{{comment.author}}</h6></a>
                 <p style="font-size: 10px; display: inline-block">
                   · on {{comment.created_at}}
                 </p>
