@@ -1,0 +1,1 @@
+web: gunicorn nomad_project.wsgi
