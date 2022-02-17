@@ -1,36 +1,38 @@
-{% extends 'base.html' %}
-
+{% extends 'base.html' %} 
 {% block title %}Nomads{% endblock %}
-
+<!-- comment -->
 {% block content%}
-<div class="container mt-5">
-  <h1>Your fellow Nomads:</h1>
-  <div class="container">
-    {% for profile in profiles %}
+<div class="row bg-dark text-light">
+  <h1 class="text-center mt-5">Meet Your Fellow Nomads</h1>
+</div>
+<div class="container">
     <div class="row">
-      <div class="col">
-        <div class="card mb-3">
-          <div class="profile-list-img-container">
-              <a href="{% url 'profile_detail' profile.pk %}">
-                <img src="{{ profile.img }}" class="card-img" alt="{{ profile.user.username }}" />
-              </a>
-          </div>
-          <div class="card-body">
-              <h2>{{ profile.user.first_name }} {{ profile.user.last_name }}</h2>
-              <h4>Current City: {{ profile.current_city }}</h4>
-              <p>Username: {{ profile.user.username }}</p>
-              <a
+        <div class="col-3"></div>
+        <div class="col-6">
+        {% for profile in profiles %}
+        <div class="card">
+            <img src="{{ profile.img }}" class="card-img" alt="{{ profile.user.username }}" />
+            <div class="card-body">
+            <p class="card-text">
+                <h5>{{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
+                <p>Current City: {{ profile.current_city }}
+                <br>
+                @{{ profile.user.username }}</p>
+            </p>
+            <a
                 href="{% url 'profile_detail' profile.pk %}"
                 type="button"
-                class="btn btn-primary lg-btn"
-              >
-                View {{ profile.user.first_name }} {{ profile.user.last_name }}'s posts</a
-              >
-          </div>
+                class="btn btn-primary stretched-link">
+                View {{ profile.user.username }}'s
+                profile</a
+            >
+            </div>
         </div>
-      </div>
+        {% empty %}
+        <p>No posts for city</p>
+        {% endfor %}
+        </div>
+        <div class="col-3"></div>
     </div>
-    {% endfor %}
-  </div>
 </div>
 {% endblock %}

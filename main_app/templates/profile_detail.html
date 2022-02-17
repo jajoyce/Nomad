@@ -1,46 +1,66 @@
-{% extends 'base.html' %}
-
-{% block title %}{{ profile }}{% endblock %}
-
+{% extends 'base.html' %} {% block title %}{{ profile }}{% endblock %}
+<!-- comment for space -->
 {% block content%}
 <div class="container mt-5">
-  <h1>{{ profile }}'s profile and posts:</h1>
-  <div class="container mt-5">
+  <h1>{{ profile }}</h1>
     <div class="row">
-      <div class="col">
-        <div class="card mb-3">
-          <div class="profile-detail-img-container">
-              <img src="{{ profile.img }}" class="card-img" alt="{{ profile.user.username }}" />
-          </div>
+      <div class="col-9">
+        {% for post in profile.user.posts.all %}
+        <div class="card">
           <div class="card-body">
-              <h2>{{ profile }}</h2>
-              <p>Username: {{ profile.user.username }}</p>
-              <h4>Current City: {{ profile.current_city }}</h4>
-              <p>About Me: "{{ profile.bio }}"</p>
+            <small> Posted from: {{ post.city }} on {{post.created_at}}</small>
+            <h3>{{ post.title }}</h3>
+            <p>"{{ post.content|truncatechars:200 }}"</p>
+            <a
+              href=" {% url 'post_detail' post.pk %}"
+              type="button"
+              class="btn btn-primary stretched-link"
+            >
+              Read Post
+            </a>
           </div>
+          <img
+            src="{{ post.img }}"
+            class="card-img"
+            alt="{{ post.city}} post image"
+          />
+        </div>
+        {% empty %}
+        <p>No posts by this user</p>
+        {% endfor %}
+      </div>
+      <div class="col-3">
+        <img
+          src="{{ profile.img }}"
+          class="img rounded-circle"
+          style="width: 125px; height: 125px"
+          alt="{{ profile.user.username }}"
+        />
+        <div class="mt-4">
+          <p>
+            @{{ profile.user.username }}
+            <br />
+            <strong> Current City:</strong>
+            <br />{{ profile.current_city }}
+            <br />
+            <strong>About Me:</strong>
+            <br />"{{ profile.bio }}"
+            <br>
+            <strong>Joined:</strong>
+            <br>{{profile.created_at}}<br>
+            <strong>Comment Activity:</strong>
+            <br>{{ profile.user.first_name }} has made {{ profile.user.comments.count }} comments.
+          </p>
+          {% if request.user == profile.user %}
+          <a href="{% url 'post_create' %}" type="button" class="btn btn-success">Create New Post</a>
+          {% endif %}
+          <br>
+          {% if request.user == profile.user %}
+          <a href="{% url 'profile_delete' user.profile.pk %}" type="button" class="btn btn-danger mt-2">Delete Profile</a>
+          {% endif %}
         </div>
       </div>
     </div>
-  </div>
-  <div class="container mt-4">
-      {% for post in profile.user.posts.all %}
-      <div class="row">
-          <div class="col">
-              <div class="card mb-2">
-                  <div class="card-body">
-                      <h3>{{ post.title }}</h3>
-                      <h5>Posted from: {{ post.city }}</h5>
-                      <p>"{{ post.content }}"</p>
-                  </div>
-                  <div class="post-small-img-container">
-                      <img src="{{ post.img }}" class="card-img" alt="{{ post.city}} post image">
-                  </div>
-              </div>
-          </div>
-      </div>
-      {% empty %}
-      <p>No posts by this user</p>
-      {% endfor %}
   </div>
 </div>
 {% endblock %}

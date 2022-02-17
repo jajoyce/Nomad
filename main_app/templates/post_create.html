@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+<!-- comment -->
+{% block title %}Create New Post{% endblock %}
+<!-- comment -->
+{% block content%}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width: 30em">
+        <div class="card-body">
+          <h3 class="card-title">New Post</h3>
+          <form method="post">
+            {% csrf_token %} 
+            {{ form.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ form.title.errors }}
+                <label for="{{ form.title.id_for_label }}">Title *</label><br>
+                {{ form.title }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.content.errors }}
+                <label for="{{ form.content.id_for_label }}">Content *</label><br>
+                {{ form.content }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.img.errors }}
+                <label for="{{ form.img.id_for_label }}">Image</label><br>
+                {{ form.img }}
+            </div>
+            {% if city_preselected %}
+            <p>City: {{ city_name }}</p>
+            {% else %}
+            <div class="fieldWrapper">
+                {{ form.city.errors }}
+                <label for="{{ form.city.id_for_label }}">City *</label><br>
+                {{ form.city }}
+            </div><br>
+            {% endif %}
+            <input type="submit" value="Create Post" class="btn btn-primary" />
+          </form><br>
+          <small>* Required</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -3,22 +3,118 @@
 {% block title %} {{post.title}} {% endblock %}
 <!-- comment -->
 {% block content%}
-<div class="container hero-section mt-5">
-  <h1>post</h1>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="card mb-3">
-            <img src="{{post.img}}" class="card-img" alt="{{post.title}}" />
-          <div class="card-body">
-            <div class="card-title">
-              <h2>{{post.title}}</h2>
-              <p>{{post.author}}</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <img src="{{post.img}}" class="card-img mb-3 mt-5" alt="{{post.title}}" />
+      <h1 class="text-center">{{post.title}}</h1>
+      <img
+        src="{{post.author.profile.img}}"
+        alt="{{post.author}}"
+        class="img rounded-circle"
+        style="width: 35px; height: 35px; display: inline-block"
+      />
+      <p style="display: inline-block">
+        Written by: <strong>{{post.author}}</strong>
+      </p>
+      <p style="font-size: 10px">
+        Published from: {{ post.city }} on {{post.created_at}}
+      </p>
+      <div class="mt-4">
+        <p>{{ post.content }}</p>
+      </div>
+      <div>
+        {% if request.user == post.author %}
+        <a
+          href="{% url 'post_update' post.pk %}"
+          type="button"
+          class="btn btn-primary"
+          >Update Post</a
+        >
+        <a
+          href="{% url 'post_delete' post.pk %}"
+          type="button"
+          class="btn btn-danger"
+          >Delete Post</a
+        >
+        {% endif %}
+      </div>
+      <div class="row mt-4">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <div>
+            <p>
+              There are <strong>{{ post.comments.count }}</strong> comments on
+              this post:
+            </p>
+          </div>
+          <div>
+            {% for comment in post.comments.all %}
+            <div class="card">
+              <img
+                src="{{comment.author.profile.img}}"
+                alt="{{comment.author}}"
+              />
+              <div class="card-body">
+                <h6 style="display: inline-block">{{comment.author}}</h6>
+                <p style="font-size: 10px; display: inline-block">
+                  · on {{comment.created_at}}
+                </p>
+                <p>{{comment.content}}</p>
+                <div>
+                  {% if request.user == comment.author %}
+                  <a
+                    href="{% url 'comment_update' comment.pk %}"
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    >Edit Comment</a
+                  >
+                  <a
+                    href="{% url 'comment_delete' comment.pk %}"
+                    type="button"
+                    class="btn btn-danger btn-sm"
+                    >Delete Comment</a
+                  >
+                  {% endif %}
+                </div>
+              </div>
             </div>
+            {% endfor %} {% if user.is_authenticated %}
+            <button
+              class="btn btn-primary mt-3"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseComment"
+              aria-expanded="false"
+              aria-controls="collapseComment"
+            >
+              Leave A Comment
+            </button>
+            <div class="collapse" id="collapseComment">
+              <div class="card">
+                <div class="card-body">
+                  <form method="POST">
+                    {% csrf_token %} {{ form.non_field_errors }}
+                    <div class="fieldWrapper">
+                      {{ form.content.errors }}
+                      <label for="{{ form.content.id_for_label }}" class="mb-2"
+                        >Leave your own comment on this post!</label
+                      ><br />
+                      {{ form.content }}
+                    </div>
+                    <input
+                      type="submit"
+                      value="Add Comment"
+                      class="btn btn-primary"
+                    />
+                  </form>
+                </div>
+              </div>
+            </div>
+            {% endif %}
           </div>
         </div>
+        <div class="col-3"></div>
       </div>
-      <p> {{ post.content }}</p>
     </div>
   </div>
 </div>

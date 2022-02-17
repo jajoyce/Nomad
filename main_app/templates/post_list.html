@@ -3,33 +3,36 @@
 {% block title %}Posts{% endblock %}
 <!-- comment -->
 {% block content%}
-<div class="container hero-section mt-5">
-  <h1>post</h1>
-  <div class="container">
-    {% for post in posts %}
-    <div class="row">
-      <div class="col">
-        <div class="card mb-3">
-          <a href=" {% url 'post_detail' post.pk %}">
-            <img src="{{post.img}}" class="card-img" alt="{{post.title}}" />
+<div class="row bg-dark text-light">
+  <h1 class="text-center mt-5">Posts</h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      {% for post in posts %}
+      <div class="card">
+        <img src="{{post.img}}" class="card-img" alt="{{post.title}}" />
+        <div class="card-body">
+          <small>
+            {{post.author}} · from: {{ post.city }} on
+            {{post.created_at}}</small
+          >
+          <h2 class="card-title">{{post.title}}</h2>
+          <p class="card-text"></p>
+          <p>{{ post.content|truncatechars:250 }}</p>
+          <a
+            href=" {% url 'post_detail' post.pk %}"
+            type="button"
+            class="btn btn-primary stretched-link"
+          >
+            Read Post
           </a>
-          <div class="card-body">
-            <div class="card-title">
-              <h2>{{post.title}}</h2>
-              <p> {{post.author}}</p> 
-              <a
-                href=" {% url 'post_detail' post.pk %}"
-                type="button"
-                class="btn btn-primary lg-btn"
-              >
-                Read Post </a
-              >
-            </div>
-          </div>
         </div>
       </div>
+      {% empty %}
+      <p>No posts for city</p>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </div>
 {% endblock %}
