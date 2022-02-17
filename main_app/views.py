@@ -179,6 +179,14 @@ class CommentDelete(DeleteView):
     def get_success_url(self):
         return reverse('post_detail', kwargs={'pk': self.object.post.pk})
 
+class ProfileUpdate(UpdateView):
+    model = Profile
+    fields = ['current_city', 'bio', 'img']
+    template_name = 'profile_update.html'
+
+    def get_success_url(self):
+        return reverse('profile_detail', kwargs={'pk': self.object.pk})
+
 class ProfileDelete(DeleteView):
     model = Profile
     template_name = "profile_delete_confirmation.html"

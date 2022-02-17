@@ -52,10 +52,12 @@
             <br>{{ profile.user.first_name }} has made {{ profile.user.comments.count }} comments.
           </p>
           {% if request.user == profile.user %}
-          <a href="{% url 'post_create' %}" type="button" class="btn btn-success">Create New Post</a>
+          <a href="{% url 'post_create' %}" type="button" class="btn btn-primary">Create New Post</a>
           {% endif %}
           <br>
+          <br>
           {% if request.user == profile.user %}
+          <a href="{% url 'profile_update' user.profile.pk %}" type="button" class="btn btn-success mt-2">Update Profile</a>
           <a href="{% url 'profile_delete' user.profile.pk %}" type="button" class="btn btn-danger mt-2">Delete Profile</a>
           {% endif %}
         </div>
