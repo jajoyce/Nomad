@@ -50,45 +50,19 @@
   </div>
 </div>
 <div class="container mt-5">
-  <h1 class="text-center">Nomad Atlas</h1>
+  <h1 class="text-center mb-5">Nomad Atlas</h1>
 </div>
 <div class="container mb-5">
   <div class="row">
+    {% for post in posts %}
     <div class="col">
-      <h4>post title</h4>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at
-        pharetra leo. Pellentesque aliquam porta odio, in tincidunt enim
-        consequat nec. Phasellus iaculis mi sapien, facilisis iaculis massa
-        consectetur vulputate. Praesent efficitur efficitur aliquet. Sed congue
-        leo in libero sodales, a ultrices ex porta. Nunc dolor ligula, iaculis
-        vitae velit vestibulum, dignissim ultrices arcu. Nam consectetur augue
-        sed scelerisque facilisis. Mauris sit amet auctor ex, et tristique est.
-      </p>
-      <a href="" class="btn btn-primary" type="button">Read More</a>
+      <h4>{{ post.title }}</h4>
+      <small>Posted by {{ post.author }} from {{ post.city }} 
+        <br>on {{ post.created_at }}</small>
+      <p class="mt-3"> {{ post.content|truncatechars:300 }}</p>
+      <a href="{% url 'post_detail' post.pk %}" class="btn btn-primary" type="button">Read More</a>
     </div>
-    <div class="col">
-      <h4>post title</h4>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at
-        pharetra leo. Pellentesque aliquam porta odio, in tincidunt enim
-        consequat nec. Phasellus iaculis mi sapien, facilisis iaculis massa
-        consectetur vulputate. Praesent efficitur efficitur aliquet. Sed congue
-        leo in libero sodales, a ultrices ex porta. Nunc dolor ligula, iaculis
-        vitae velit vestibulum, dignissim ultrices arcu. Nam consectetur augue
-        sed scelerisque facilisis. Mauris sit amet auctor ex, et tristique est.
-      </p>
-      <a href="" class="btn btn-primary" type="button">Read More</a>
-    </div>
-    <div class="col">
-      <h4>post title</h4>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio
-        illum nam voluptatibus harum cumque quos autem dolores aperiam nihil eum
-        blanditiis esse, quasi odio sapiente ex similique quae saepe itaque!
-      </p>
-      <a href="" class="btn btn-primary" type="button">Read More</a>
-    </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}

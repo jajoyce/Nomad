@@ -17,6 +17,12 @@
   object-fit: cover;
 }
 
+.city-list-card-img {
+  width: 45% !important;
+  height: auto;
+  object-fit: cover;
+}
+
 .card-body {
   width: 25%;
 }
@@ -47,4 +53,10 @@
 
 .fieldWrapper input {
   width: 80%;
+}
+
+.profile-circle-img {
+  width: 125px !important;
+  height: 125px !important;
+  object-fit: cover !important;
 }
