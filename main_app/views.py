@@ -163,3 +163,22 @@ class Loggedin(View):
     def get(self, request):
         user = request.user
         return redirect(f'/nomads/{user.profile.pk}')
+
+class CommentUpdate(UpdateView):
+    model = Comment
+    fields = ['content']
+    template_name = "comment_update.html"
+    
+    def get_success_url(self):
+        return reverse('post_detail', kwargs={'pk': self.object.post.pk})
+    
+class CommentDelete(DeleteView):
+    model = Comment
+    template_name = "comment_delete_confirmation.html"
+    
+    def get_success_url(self):
+        return reverse('post_detail', kwargs={'pk': self.object.post.pk})
+
+class ProfileDelete(DeleteView):
+    model = Profile
+    template_name = "profile_delete_confirmation.html"

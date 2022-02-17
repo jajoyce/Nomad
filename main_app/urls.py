@@ -17,4 +17,7 @@ urlpatterns = [
     path('posts/<int:pk>/delete', views.PostDelete.as_view(), name='post_delete'),
     path('create-profile/', views.ProfileCreate.as_view(), name='create_profile'),
     path('loggedin/', views.Loggedin.as_view(), name="loggedin"),
+    path('comments/<int:pk>/update', views.CommentUpdate.as_view(), name='comment_update'),
+    path('comments/<int:pk>/delete', views.CommentDelete.as_view(), name='comment_delete'),
+    path('nomads/<int:pk>/delete', views.ProfileDelete.as_view(), name='profile_delete'),
 ]

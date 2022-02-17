@@ -54,6 +54,10 @@
           {% if request.user == profile.user %}
           <a href="{% url 'post_create' %}" type="button" class="btn btn-success">Create New Post</a>
           {% endif %}
+          <br>
+          {% if request.user == profile.user %}
+          <a href="{% url 'profile_delete' user.profile.pk %}" type="button" class="btn btn-danger mt-2">Delete Profile</a>
+          {% endif %}
         </div>
       </div>
     </div>

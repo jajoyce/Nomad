@@ -61,6 +61,22 @@
                   · on {{comment.created_at}}
                 </p>
                 <p>{{comment.content}}</p>
+                <div>
+                  {% if request.user == comment.author %}
+                  <a
+                    href="{% url 'comment_update' comment.pk %}"
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    >Edit Comment</a
+                  >
+                  <a
+                    href="{% url 'comment_delete' comment.pk %}"
+                    type="button"
+                    class="btn btn-danger btn-sm"
+                    >Delete Comment</a
+                  >
+                  {% endif %}
+                </div>
               </div>
             </div>
             {% endfor %} {% if user.is_authenticated %}
