@@ -47,31 +47,16 @@ class Signup(View):
             context ={"form": form}
             return render(request, "registration/signup.html", context)
 
-# class UserUpdateForm(UserChangeForm):
-#     email = forms.EmailField()
-#     first_name = forms.CharField()
-#     last_name  = forms.CharField()
-
-#     class Meta:
-#         model = User
-#         fields = ["username", "email", "first_name", "last_name", "password1", "password2"]
 class UserUpdate(UpdateView):
     model = User
+    fields = ["username", "email", "first_name", "last_name"]
     template_name ='registration/user_update.html'
-    # def get(self, request):
-    #     form = UserUpdateForm()
-    #     context = {"form": form}
-    #     return render(request, "registration/user_update.html", context)
-    
-    # def post(self, request):
-    #     form = UserUpdateForm(request.POST)
-    #     if form.is_valid():
-    #         user = form.save()
-    #         login(request, user)
-    #         return redirect(f"/nomads/{ }/")
-    #     else:
-    #         context ={"form": form}
-    #         return render(request, "registration/user_update.html", context)
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_success_url(self):
+        return reverse('profile_detail', kwargs={'pk': self.object.profile.pk})
 
 class CityList(TemplateView):
     template_name = "city_list.html"
