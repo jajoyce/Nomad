@@ -9,7 +9,7 @@ class City(models.Model):
     name = models.CharField(max_length=300)
     img = models.CharField(max_length=500)
     country = models.CharField(max_length=300)
-    slug = models.SlugField(null=True)
+    slug = models.SlugField(null=False, unique=True, blank=True)
 
     def __str__(self):
         return self.name
