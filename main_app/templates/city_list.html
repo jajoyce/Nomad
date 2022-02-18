@@ -7,7 +7,7 @@
   <h1 class="text-center mt-5">Explore Cities</h1>
 </div>
 <div class="container">
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-2"></div>
     <div class="col-8">
       {% for city in cities %}
@@ -19,7 +19,8 @@
         />
         <div class="card-body">
           <div class="card-title">
-            <h2>{{city.name}}, {{city.country}}</h2>
+            <h2>{{city.name}}</h2>
+            <h4>{{city.country}}</h4>
             <a
               href="{{ city.get_absolute_url }}"
               type="button"

@@ -6,7 +6,7 @@
   <h1 class="text-center mt-5">Meet Your Fellow Nomads</h1>
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-3"></div>
         <div class="col-6">
         {% for profile in profiles %}
@@ -14,8 +14,8 @@
             <img src="{{ profile.img }}" class="card-img" alt="{{ profile.user.username }}" />
             <div class="card-body">
             <p class="card-text">
-                <h5>{{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
-                <p>Current City: {{ profile.current_city }}
+                <h4>{{ profile.user.first_name }} {{ profile.user.last_name }}</h4>
+                <p><em>Current City:</em> {{ profile.current_city }}
                 <br>
                 @{{ profile.user.username }}</p>
             </p>
