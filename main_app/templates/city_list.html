@@ -12,12 +12,16 @@
     <div class="col-8">
       {% for city in cities %}
       <div class="card">
-        <img src="{{city.img}}" class="card-img city-list-card-img" alt="{{city.name}}" />
+        <img
+          src="{{city.img}}"
+          class="card-img city-list-card-img"
+          alt="{{city.name}}"
+        />
         <div class="card-body">
           <div class="card-title">
             <h2>{{city.name}}, {{city.country}}</h2>
             <a
-              href="{% url 'city_detail' city.pk %}"
+              href="{{ city.get_absolute_url }}"
               type="button"
               class="btn btn-primary stretched-link"
             >

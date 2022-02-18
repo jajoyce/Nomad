@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 
@@ -7,12 +9,21 @@ class City(models.Model):
     name = models.CharField(max_length=300)
     img = models.CharField(max_length=500)
     country = models.CharField(max_length=300)
+    slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name_plural = "cities"
+
+    def get_absolute_url(self):
+        return reverse('city_detail', kwargs={'slug':self.slug})
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
