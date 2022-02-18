@@ -8,36 +8,43 @@
     <div class="col">
       <img src="{{post.img}}" class="card-img mb-3 mt-5" alt="{{post.title}}" />
       <h1 class="text-center">{{post.title}}</h1>
-      <img
-        src="{{post.author.profile.img}}"
-        alt="{{post.author}}"
-        class="img rounded-circle"
-        style="width: 35px; height: 35px; display: inline-block"
-      />
-      <p style="display: inline-block">
-        Written by: <strong>{{post.author}}</strong>
-      </p>
-      <p style="font-size: 10px">
-        Published from: {{ post.city }} on {{post.created_at}}
-      </p>
-      <div class="mt-4">
-        <p>{{ post.content }}</p>
+      <div class="text-center mt-4">
+        <img
+          src="{{post.author.profile.img}}"
+          alt="{{post.author}}"
+          class="img rounded-circle"
+          style="width: 35px; height: 35px; display: inline-block"
+        />
+        <p style="display: inline-block">
+          Written by:
+          <a href="{% url 'profile_detail' post.author.profile.pk %}"
+            ><strong>{{post.author}}</strong></a
+          >
+        </p>
+        <p style="font-size: 10px">
+          Published from: {{ post.city }} on {{post.created_at}}
+        </p>
       </div>
-      <div>
-        {% if request.user == post.author %}
-        <a
+      <div class="px-5">
+        <div class="mt-4 px-5">
+          <p>{{ post.content }}</p>
+        </div>
+        <div class="px-5">
+          {% if request.user == post.author %}
+          <a
           href="{% url 'post_update' post.pk %}"
           type="button"
-          class="btn btn-primary"
+          class="btn btn-primary px-3"
           >Update Post</a
-        >
-        <a
+          >
+          <a
           href="{% url 'post_delete' post.pk %}"
           type="button"
-          class="btn btn-danger"
+          class="btn btn-danger px-3"
           >Delete Post</a
-        >
-        {% endif %}
+          >
+          {% endif %}
+        </div>
       </div>
       <div class="row mt-4">
         <div class="col-3"></div>
@@ -56,7 +63,7 @@
                 alt="{{comment.author}}"
               />
               <div class="card-body">
-                <h6 style="display: inline-block">{{comment.author}}</h6>
+                <a href="{% url 'profile_detail' comment.author.profile.pk %}"><h6 style="display: inline-block">{{comment.author}}</h6></a>
                 <p style="font-size: 10px; display: inline-block">
                   · on {{comment.created_at}}
                 </p>

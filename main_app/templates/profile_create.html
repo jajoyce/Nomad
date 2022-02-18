@@ -1,14 +1,12 @@
-{% extends 'base.html' %}
-<!-- comment -->
-{% block title %}Update Profile{% endblock %}
-<!-- comment -->
+{% extends 'base.html' %} {% block title %}Create Profile{% endblock %}
+<!-- comment  -->
 {% block content%}
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="card" style="width: 30em">
-        <div class="card-body">
-          <h3 class="card-title">Update Your Profile</h3>
+      <div class="card" style="width: 26em">
+        <div class="card-body p-4">
+          <h3 class="card-title">Create Your Nomad Profile</h3>
           <form method="post">
             {% csrf_token %} {{ form.non_field_errors }}
             <div class="fieldWrapper">
@@ -20,29 +18,24 @@
             </div>
             <div class="fieldWrapper">
               {{ form.bio.errors }}
-              <label for="{{ form.bio.id_for_label }}">Bio *</label><br />
+              <label for="{{ form.bio.id_for_label }}">Bio (Introduce yourself to your fellow Nomads!) *</label><br />
               {{ form.bio }}
             </div>
             <div class="fieldWrapper">
               {{ form.img.errors }}
-              <label for="{{ form.img.id_for_label }}">Image</label><br />
+              <label for="{{ form.img.id_for_label }}">Profile Image *</label><br />
               {{ form.img }}
             </div>
             <br />
             <input
               type="submit"
-              value="Update Profile"
+              value="Create Your Profile"
               class="btn btn-primary"
             />
           </form>
           <br />
           <small>* Required</small>
         </div>
-      </div>
-      <div class="text-center">
-        <a href="{% url 'user_update' %}"
-          ><h6>Do you need to update your user account information?</h6></a
-        >
       </div>
     </div>
   </div>

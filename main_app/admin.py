@@ -7,3 +7,6 @@ admin.site.register(Profile)
 admin.site.register(Post)
 admin.site.register(City)
 admin.site.register(Comment)
+
+class NomadAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}

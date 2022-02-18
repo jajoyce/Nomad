@@ -1,13 +1,54 @@
 {% extends 'base.html' %} {% block title %}Sign Up{% endblock %}
 <!-- comment -->
 {% block content%}
-<div class="container hero-section mt-5">
-  <h1>Sign up for Nomad Atlas</h1>
-  <form method="post" action="{% url 'signup' %}">
-    {% csrf_token %} {{ form.as_p }}
-    <input type="submit" class="button" value="Sign Up" />
-    <input type="hidden" name="next" value="{{ next }}" />
-  </form>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width: 25em">
+          <div class="card-body">
+              <h3 class="card-title">Sign Up for Nomad Atlas</h3>
+              <form method="post">
+                  {% csrf_token %} 
+                  {{ form.non_field_errors }}
+                  <div class="fieldWrapper">
+                      {{ form.username.errors }}
+                      <label for="{{ form.username.id_for_label }}">Username *</label><br>
+                      {{ form.username }}
+                      <p style="font-size: 11px;">150 characters or fewer. Letters, digits and @/./+/-/_ only</p>
+                  </div>
+                  <div class="fieldWrapper">
+                      {{ form.email.errors }}
+                      <label for="{{ form.email.id_for_label }}">Email Address *</label><br>
+                      {{ form.email }}
+                  </div>
+                  <div class="fieldWrapper">
+                      {{ form.first_name.errors }}
+                      <label for="{{ form.first_name.id_for_label }}">First Name *</label><br>
+                      {{ form.first_name }}
+                  </div>
+                  <div class="fieldWrapper">
+                      {{ form.last_name.errors }}
+                      <label for="{{ form.last_name.id_for_label }}">Last Name *</label><br>
+                      {{ form.last_name }}
+                  </div>
+                  <div class="fieldWrapper">
+                      {{ form.password1.errors }}
+                      <label for="{{ form.password1.id_for_label }}">Password *</label><br>
+                      {{ form.password1 }}
+                  </div>
+                  <div class="fieldWrapper">
+                      {{ form.password2.errors }}
+                      <label for="{{ form.password2.id_for_label }}">Confirm Password *</label><br>
+                      {{ form.password2 }}
+                  </div>
+                  <br>
+                  <input type="submit" value="Create User Account" class="btn btn-primary">
+                </form><br>
+              <small>* Required</small>
+          </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="mt-4" style="text-align: center">
   <h6>Already have an account? <a href="{% url 'login' %}">Login here</a></h6>
