@@ -4,7 +4,7 @@ from django.views import View
 from django.views.generic import TemplateView, DetailView, CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm 
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import City, Post, Profile, User, Comment
 from django.contrib.auth.models import User
@@ -42,7 +42,7 @@ class Signup(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("/create-profile/")
+            return redirect("/nomads/new")
         else:
             context ={"form": form}
             return render(request, "registration/signup.html", context)
@@ -166,7 +166,7 @@ class PostDelete(LoginRequiredMixin, DeleteView):
 class ProfileCreate(CreateView):
     model = Profile
     fields = ['img', 'current_city', 'bio']
-    template_name = 'create_profile.html'
+    template_name = 'profile_create.html'
     
     def get_success_url(self):
         return reverse('profile_detail', kwargs={'pk': self.object.pk})
@@ -206,3 +206,5 @@ class ProfileUpdate(UpdateView):
 class ProfileDelete(DeleteView):
     model = Profile
     template_name = "profile_delete_confirmation.html"
+    success_url = "/"
+

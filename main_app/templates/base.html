@@ -73,12 +73,14 @@
         <ul class="navbar-nav">
           {% if user.is_authenticated %}
           <li class="nav-item mx-2">
+            {% if user.profile %}
             <a
               class="nav-link text-reset"
               href="{% url 'profile_detail' user.profile.pk %}"
             >
               Welcome {{user.first_name }}</a
             >
+            {% endif %}
           </li>
           <li class="nav-item mx-2">
             <a class="nav-link text-reset" href="{% url 'logout' %}">Logout</a>
